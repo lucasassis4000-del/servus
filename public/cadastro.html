@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro — SERVUS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>body{font-family:'Inter',sans-serif}</style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+
+<nav class="bg-white border-b border-gray-200 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
+    <a href="/" class="flex items-center gap-2">
+      <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+        <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16"/></svg>
+      </div>
+      <span class="text-xl font-bold text-gray-900">SERVUS</span>
+    </a>
+    <a href="/login.html" class="text-sm text-gray-600 hover:text-blue-600">Já tem conta? Entrar →</a>
+  </div>
+</nav>
+
+<div class="flex-1 flex items-center justify-center px-4 py-12">
+  <div class="bg-white rounded-2xl shadow-sm border border-gray-100 w-full max-w-lg p-8">
+    <h1 class="text-2xl font-bold text-gray-900 mb-1">Criar conta gratuita</h1>
+    <p class="text-gray-500 text-sm mb-6">Conecte-se aos melhores profissionais da construção civil</p>
+
+    <!-- Tipo de conta -->
+    <div class="grid grid-cols-2 gap-3 mb-6">
+      <button id="btn-cliente" onclick="setTipo('cliente')"
+        class="tipo-btn border-2 border-blue-600 bg-blue-50 text-blue-700 font-semibold py-3 rounded-xl text-sm transition-all">
+        👤 Sou cliente
+      </button>
+      <button id="btn-profissional" onclick="setTipo('profissional')"
+        class="tipo-btn border-2 border-gray-200 text-gray-600 font-semibold py-3 rounded-xl text-sm transition-all hover:border-blue-400">
+        👷 Sou profissional
+      </button>
+    </div>
+
+    <form id="form-cadastro" class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Nome completo *</label>
+        <input id="nome" type="text" required placeholder="Seu nome"
+          class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">E-mail *</label>
+        <input id="email" type="email" required placeholder="seu@email.com"
+          class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">WhatsApp *</label>
+        <input id="telefone" type="tel" required placeholder="(11) 9 0000-0000"
+          class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Cidade *</label>
+          <input id="cidade" type="text" required placeholder="Sua cidade"
+            class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Estado *</label>
+          <select id="estado" required class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option value="">UF</option>
+            <option>AC</option><option>AL</option><option>AP</option><option>AM</option><option>BA</option>
+            <option>CE</option><option>DF</option><option>ES</option><option>GO</option><option>MA</option>
+            <option>MT</option><option>MS</option><option>MG</option><option>PA</option><option>PB</option>
+            <option>PR</option><option>PE</option><option>PI</option><option>RJ</option><option>RN</option>
+            <option>RS</option><option>RO</option><option>RR</option><option>SC</option><option selected>SP</option>
+            <option>SE</option><option>TO</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Campos extras para profissional -->
+      <div id="campos-profissional" class="hidden space-y-4">
+        <hr class="border-gray-100">
+        <p class="text-sm font-semibold text-gray-700">Informações profissionais</p>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Categoria de serviço *</label>
+          <select id="categoria" class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option value="">Selecione...</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Título profissional *</label>
+          <input id="titulo" type="text" placeholder="Ex: Eletricista Residencial e Comercial"
+            class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Anos de experiência</label>
+            <input id="anos-exp" type="number" min="0" max="50" placeholder="0"
+              class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Valor/hora (R$)</label>
+            <input id="valor-hora" type="number" min="0" placeholder="Opcional"
+              class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Sobre você</label>
+          <textarea id="descricao" rows="2" placeholder="Fale sobre sua experiência e diferenciais..."
+            class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"></textarea>
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Senha *</label>
+        <input id="senha" type="password" required minlength="6" placeholder="Mínimo 6 caracteres"
+          class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+      </div>
+
+      <div id="form-error" class="hidden text-red-600 text-sm bg-red-50 rounded-lg px-3 py-2"></div>
+
+      <button type="submit" id="btn-submit" class="w-full bg-blue-600 text-white font-bold py-3 rounded-xl hover:bg-blue-700 transition-colors text-sm">
+        Criar conta grátis
+      </button>
+      <p class="text-xs text-gray-400 text-center">Ao criar conta você concorda com nossos termos de uso.</p>
+    </form>
+  </div>
+</div>
+
+<script src="/js/config.js"></script>
+<script>
+let tipoAtual = new URLSearchParams(location.search).get('tipo') === 'profissional' ? 'profissional' : 'cliente';
+
+async function init() {
+  if (Auth.isLoggedIn()) { window.location.href = '/dashboard.html'; return; }
+  setTipo(tipoAtual);
+  const cats = await API.get('servus_categorias', 'ativo=eq.true&order=nome.asc');
+  const sel = document.getElementById('categoria');
+  if (cats) cats.forEach(c => {
+    const o = document.createElement('option');
+    o.value = c.id; o.textContent = c.icone + ' ' + c.nome;
+    sel.appendChild(o);
+  });
+}
+
+function setTipo(tipo) {
+  tipoAtual = tipo;
+  const bc = document.getElementById('btn-cliente');
+  const bp = document.getElementById('btn-profissional');
+  const cp = document.getElementById('campos-profissional');
+  if (tipo === 'cliente') {
+    bc.className = 'tipo-btn border-2 border-blue-600 bg-blue-50 text-blue-700 font-semibold py-3 rounded-xl text-sm transition-all';
+    bp.className = 'tipo-btn border-2 border-gray-200 text-gray-600 font-semibold py-3 rounded-xl text-sm transition-all hover:border-blue-400';
+    cp.classList.add('hidden');
+    document.getElementById('categoria').required = false;
+    document.getElementById('titulo').required = false;
+  } else {
+    bp.className = 'tipo-btn border-2 border-blue-600 bg-blue-50 text-blue-700 font-semibold py-3 rounded-xl text-sm transition-all';
+    bc.className = 'tipo-btn border-2 border-gray-200 text-gray-600 font-semibold py-3 rounded-xl text-sm transition-all hover:border-blue-400';
+    cp.classList.remove('hidden');
+    document.getElementById('categoria').required = true;
+    document.getElementById('titulo').required = true;
+  }
+}
+
+document.getElementById('form-cadastro').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const errEl = document.getElementById('form-error');
+  errEl.classList.add('hidden');
+  const btn = document.getElementById('btn-submit');
+  btn.textContent = 'Criando conta...'; btn.disabled = true;
+
+  try {
+    const email = document.getElementById('email').value;
+    const senha = document.getElementById('senha').value;
+    const nome = document.getElementById('nome').value;
+    const telefone = document.getElementById('telefone').value;
+    const cidade = document.getElementById('cidade').value;
+    const estado = document.getElementById('estado').value;
+
+    const data = await Auth.signUp(email, senha, nome, tipoAtual, telefone, cidade, estado);
+
+    if (tipoAtual === 'profissional' && data.user) {
+      const userId = data.user.id;
+      const perfis = await API.get('servus_perfis', `id=eq.${userId}`);
+      if (perfis && perfis[0]) {
+        await API.post('servus_profissionais', {
+          perfil_id: userId,
+          categoria_id: document.getElementById('categoria').value,
+          titulo: document.getElementById('titulo').value,
+          descricao: document.getElementById('descricao').value,
+          anos_experiencia: parseInt(document.getElementById('anos-exp').value) || 0,
+          valor_hora: parseFloat(document.getElementById('valor-hora').value) || null
+        });
+      }
+    }
+
+    await Auth.loadPerfil();
+    window.location.href = '/dashboard.html';
+  } catch(err) {
+    errEl.textContent = err.message === 'User already registered'
+      ? 'Este e-mail já está cadastrado. Tente fazer login.'
+      : err.message;
+    errEl.classList.remove('hidden');
+    btn.textContent = 'Criar conta grátis'; btn.disabled = false;
+  }
+});
+
+init();
+</script>
+</body>
+</html>
