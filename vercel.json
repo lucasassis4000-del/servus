@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "name": "servus",
+  "public": true,
+  "outputDirectory": "public",
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/profissionais", "destination": "/profissionais.html" },
+    { "source": "/perfil", "destination": "/perfil.html" },
+    { "source": "/cadastro", "destination": "/cadastro.html" },
+    { "source": "/login", "destination": "/login.html" },
+    { "source": "/dashboard", "destination": "/dashboard.html" },
+    { "source": "/solicitar", "destination": "/solicitar.html" },
+    { "source": "/como-funciona", "destination": "/como-funciona.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    }
+  ]
+}
