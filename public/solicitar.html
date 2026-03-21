@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solicitar Orçamento — SERVUS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>body{font-family:'Inter',sans-serif}</style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+<nav class="bg-white border-b border-gray-200 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
+    <a href="/" class="flex items-center gap-2">
+      <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+        <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16"/></svg>
+      </div>
+      <span class="text-xl font-bold text-gray-900">SERVUS</span>
+    </a>
+    <a href="/dashboard.html" class="text-sm text-gray-600 hover:text-blue-600">← Painel</a>
+  </div>
+</nav>
+
+<div class="max-w-2xl mx-auto px-4 py-10">
+  <h1 class="text-2xl font-bold text-gray-900 mb-1">Solicitar Orçamento</h1>
+  <p class="text-gray-500 text-sm mb-6">Descreva o serviço e receba propostas de profissionais qualificados.</p>
+
+  <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+    <form id="form-solicitar" class="space-y-5">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Categoria do serviço *</label>
+        <select id="categoria" required class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <option value="">Selecione a categoria...</option>
+        </select>
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Título do serviço *</label>
+        <input id="titulo" type="text" required placeholder="Ex: Instalação elétrica de 3 cômodos"
+          class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Descrição detalhada *</label>
+        <textarea id="descricao" rows="4" required placeholder="Descreva o que precisa ser feito, tamanho do espaço, materiais disponíveis, etc."
+          class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"></textarea>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Cidade *</label>
+          <input id="cidade" type="text" required placeholder="Sua cidade"
+            class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Estado</label>
+          <select id="estado" class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option value="">UF</option>
+            <option>SP</option><option>RJ</option><option>MG</option><option>RS</option><option>PR</option>
+            <option>SC</option><option>BA</option><option>GO</option><option>DF</option><option>PE</option>
+            <option>CE</option><option>AM</option><option>PA</option><option>MT</option><option>MS</option>
+            <option>ES</option><option>RN</option><option>PB</option><option>AL</option><option>PI</option>
+            <option>SE</option><option>MA</option><option>TO</option><option>RO</option><option>AC</option>
+            <option>AP</option><option>RR</option>
+          </select>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Data desejada</label>
+          <input id="data-prevista" type="date"
+            class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Orçamento estimado (R$)</label>
+          <input id="valor-proposto" type="number" min="0" placeholder="Opcional"
+            class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+      </div>
+      <div class="flex items-center gap-3 bg-red-50 border border-red-200 rounded-lg px-4 py-3 cursor-pointer" onclick="toggleUrgente()">
+        <input id="urgente" type="checkbox" class="w-4 h-4 text-red-600">
+        <div>
+          <p class="text-sm font-semibold text-red-700">É urgente?</p>
+          <p class="text-xs text-red-500">Marque se precisar do serviço com urgência</p>
+        </div>
+      </div>
+      <div id="form-error" class="hidden text-red-600 text-sm bg-red-50 rounded-lg px-3 py-2"></div>
+      <div id="form-success" class="hidden text-green-700 text-sm bg-green-50 border border-green-200 rounded-lg px-4 py-3">
+        ✅ Solicitação enviada! Profissionais da sua área serão notificados.
+        <a href="/dashboard.html" class="block mt-2 text-green-700 font-semibold hover:underline">Ir para o painel →</a>
+      </div>
+      <button type="submit" id="btn-submit" class="w-full bg-blue-600 text-white font-bold py-3 rounded-xl hover:bg-blue-700 transition-colors">
+        Publicar solicitação
+      </button>
+    </form>
+  </div>
+</div>
+
+<script src="/js/config.js"></script>
+<script>
+function toggleUrgente() {
+  const cb = document.getElementById('urgente');
+  cb.checked = !cb.checked;
+}
+
+async function init() {
+  if (!Auth.isLoggedIn()) { window.location.href = '/login.html?redirect=/solicitar.html'; return; }
+  await Auth.loadPerfil();
+  const p = Auth.getPerfil();
+  if (p) {
+    document.getElementById('cidade').value = p.cidade || '';
+    document.getElementById('estado').value = p.estado || '';
+  }
+  const cats = await API.get('servus_categorias', 'ativo=eq.true&order=nome.asc');
+  const sel = document.getElementById('categoria');
+  if (cats) cats.forEach(c => {
+    const o = document.createElement('option');
+    o.value = c.id; o.textContent = c.icone + ' ' + c.nome;
+    sel.appendChild(o);
+  });
+}
+
+document.getElementById('form-solicitar').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const errEl = document.getElementById('form-error');
+  const sucEl = document.getElementById('form-success');
+  errEl.classList.add('hidden'); sucEl.classList.add('hidden');
+  const btn = document.getElementById('btn-submit');
+  btn.textContent = 'Enviando...'; btn.disabled = true;
+  try {
+    const perfil = Auth.getPerfil();
+    if (!perfil) throw new Error('Sessão expirada. Faça login novamente.');
+    await API.post('servus_solicitacoes', {
+      cliente_id: perfil.id,
+      categoria_id: document.getElementById('categoria').value,
+      titulo: document.getElementById('titulo').value,
+      descricao: document.getElementById('descricao').value,
+      cidade: document.getElementById('cidade').value,
+      estado: document.getElementById('estado').value,
+      data_prevista: document.getElementById('data-prevista').value || null,
+      valor_proposto: parseFloat(document.getElementById('valor-proposto').value) || null,
+      urgente: document.getElementById('urgente').checked
+    });
+    sucEl.classList.remove('hidden');
+    e.target.reset();
+  } catch(err) {
+    errEl.textContent = err.message;
+    errEl.classList.remove('hidden');
+  } finally {
+    btn.textContent = 'Publicar solicitação'; btn.disabled = false;
+  }
+});
+
+init();
+</script>
+</body>
+</html>
