@@ -1,0 +1,11 @@
+{
+  "name": "servus",
+  "version": "1.0.0",
+  "description": "SERVUS — Plataforma de conexão entre profissionais da construção civil e clientes",
+  "scripts": {
+    "build": "echo 'Static site — no build needed'",
+    "start": "npx serve public"
+  },
+  "keywords": ["construção civil", "serviços", "marketplace"],
+  "license": "MIT"
+}
