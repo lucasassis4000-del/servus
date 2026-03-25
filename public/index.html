@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SERVUS — Encontre os melhores profissionais da construção civil</title>
+  <meta name="description" content="Conectamos profissionais qualificados da construção civil com clientes em todo o Brasil. Elétrica, hidráulica, pintura, alvenaria e muito mais." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .gradient-hero { background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 50%, #0ea5e9 100%); }
+    .card-hover { transition: transform 0.2s, box-shadow 0.2s; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
+    .text-gradient { background: linear-gradient(135deg, #2563eb, #0ea5e9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  </style>
+</head>
+<body class="bg-gray-50">
+
+<!-- NAVBAR -->
+<nav class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href="/" class="flex items-center gap-2">
+        <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+          <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+        </div>
+        <span class="text-xl font-bold text-gray-900">SERVUS</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600">
+        <a href="/profissionais.html" class="hover:text-blue-600 transition-colors">Profissionais</a>
+        <a href="/como-funciona.html" class="hover:text-blue-600 transition-colors">Como funciona</a>
+        <a href="/cadastro.html?tipo=profissional" class="hover:text-blue-600 transition-colors">Seja um profissional</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="/login.html" class="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors px-3 py-2">Entrar</a>
+        <a href="/cadastro.html" class="bg-blue-600 text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">Cadastrar grátis</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="gradient-hero py-20 px-4">
+  <div class="max-w-4xl mx-auto text-center text-white">
+    <span class="bg-blue-500/30 text-blue-100 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Construção Civil</span>
+    <h1 class="mt-4 text-4xl sm:text-5xl lg:text-6xl font-black leading-tight">
+      Encontre o profissional <br>certo para sua obra
+    </h1>
+    <p class="mt-4 text-lg text-blue-100 max-w-2xl mx-auto">
+      Conectamos você com os melhores profissionais da construção civil — verificados, avaliados e prontos para trabalhar.
+    </p>
+    <!-- SEARCH BAR -->
+    <form action="/profissionais.html" method="get" class="mt-8 bg-white rounded-2xl shadow-2xl p-2 flex flex-col sm:flex-row gap-2 max-w-2xl mx-auto">
+      <select name="categoria" class="flex-1 px-4 py-3 text-gray-700 bg-transparent rounded-xl focus:outline-none text-sm">
+        <option value="">Qual serviço você precisa?</option>
+      </select>
+      <input name="cidade" type="text" placeholder="Sua cidade" class="flex-1 px-4 py-3 text-gray-700 bg-gray-50 rounded-xl focus:outline-none text-sm border border-gray-200">
+      <button type="submit" class="bg-blue-600 text-white font-semibold px-8 py-3 rounded-xl hover:bg-blue-700 transition-colors text-sm">
+        Buscar
+      </button>
+    </form>
+    <p class="mt-4 text-blue-200 text-sm">Mais de 500 profissionais cadastrados em todo o Brasil</p>
+  </div>
+</section>
+
+<!-- CATEGORIAS -->
+<section class="py-16 px-4 bg-white">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-10">
+      <h2 class="text-3xl font-bold text-gray-900">Serviços disponíveis</h2>
+      <p class="text-gray-500 mt-2">Tudo que você precisa para sua obra ou reforma</p>
+    </div>
+    <div id="categorias-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+      <!-- populated by JS -->
+      <div class="animate-pulse bg-gray-100 rounded-2xl h-28"></div>
+      <div class="animate-pulse bg-gray-100 rounded-2xl h-28"></div>
+      <div class="animate-pulse bg-gray-100 rounded-2xl h-28"></div>
+      <div class="animate-pulse bg-gray-100 rounded-2xl h-28"></div>
+    </div>
+    <div class="text-center mt-8">
+      <a href="/profissionais.html" class="inline-flex items-center gap-2 text-blue-600 font-semibold hover:underline">
+        Ver todos os profissionais →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="py-16 px-4 bg-gray-50">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900">Como funciona</h2>
+      <p class="text-gray-500 mt-2">Simples, rápido e seguro</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="text-center">
+        <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        </div>
+        <h3 class="font-bold text-gray-900 text-lg mb-2">1. Busque o profissional</h3>
+        <p class="text-gray-500 text-sm">Filtre por categoria, cidade e avaliação. Veja o perfil completo com fotos e avaliações de outros clientes.</p>
+      </div>
+      <div class="text-center">
+        <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+        </div>
+        <h3 class="font-bold text-gray-900 text-lg mb-2">2. Solicite um orçamento</h3>
+        <p class="text-gray-500 text-sm">Descreva o serviço e receba propostas diretamente no app ou via WhatsApp. Sem comprometimento.</p>
+      </div>
+      <div class="text-center">
+        <div class="w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+        </div>
+        <h3 class="font-bold text-gray-900 text-lg mb-2">3. Contrate e avalie</h3>
+        <p class="text-gray-500 text-sm">Contrate com segurança e após o serviço avalie o profissional. Juntos construímos uma plataforma de confiança.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROFISSIONAIS DESTAQUE -->
+<section class="py-16 px-4 bg-white">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-center justify-between mb-10">
+      <div>
+        <h2 class="text-3xl font-bold text-gray-900">Profissionais em destaque</h2>
+        <p class="text-gray-500 mt-1">Os mais bem avaliados da plataforma</p>
+      </div>
+      <a href="/profissionais.html" class="hidden sm:block text-blue-600 font-semibold hover:underline text-sm">Ver todos →</a>
+    </div>
+    <div id="destaques-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div class="animate-pulse bg-gray-100 rounded-2xl h-64"></div>
+      <div class="animate-pulse bg-gray-100 rounded-2xl h-64"></div>
+      <div class="animate-pulse bg-gray-100 rounded-2xl h-64"></div>
+      <div class="animate-pulse bg-gray-100 rounded-2xl h-64"></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="py-16 px-4 gradient-hero">
+  <div class="max-w-4xl mx-auto">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
+      <div>
+        <div class="text-4xl font-black" id="stat-profissionais">500+</div>
+        <div class="text-blue-200 text-sm mt-1">Profissionais</div>
+      </div>
+      <div>
+        <div class="text-4xl font-black">2k+</div>
+        <div class="text-blue-200 text-sm mt-1">Serviços realizados</div>
+      </div>
+      <div>
+        <div class="text-4xl font-black">4.8★</div>
+        <div class="text-blue-200 text-sm mt-1">Nota média</div>
+      </div>
+      <div>
+        <div class="text-4xl font-black">50+</div>
+        <div class="text-blue-200 text-sm mt-1">Cidades</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA PROFISSIONAL -->
+<section class="py-16 px-4 bg-gray-50">
+  <div class="max-w-3xl mx-auto text-center">
+    <h2 class="text-3xl font-bold text-gray-900">Você é profissional da construção?</h2>
+    <p class="text-gray-500 mt-3 text-lg">Cadastre-se gratuitamente e receba solicitações de clientes na sua região. Sem taxa de adesão.</p>
+    <div class="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="/cadastro.html?tipo=profissional" class="bg-blue-600 text-white font-bold px-8 py-4 rounded-xl hover:bg-blue-700 transition-colors text-base">
+        Cadastrar como profissional
+      </a>
+      <a href="/profissionais.html" class="bg-white border-2 border-blue-600 text-blue-600 font-bold px-8 py-4 rounded-xl hover:bg-blue-50 transition-colors text-base">
+        Conhecer a plataforma
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-gray-900 text-gray-400 py-12 px-4">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid md:grid-cols-4 gap-8 mb-8">
+      <div>
+        <div class="flex items-center gap-2 mb-3">
+          <div class="w-7 h-7 bg-blue-600 rounded-lg flex items-center justify-center">
+            <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16"/></svg>
+          </div>
+          <span class="text-white font-bold text-lg">SERVUS</span>
+        </div>
+        <p class="text-sm">A ponte entre os melhores profissionais e os clientes que precisam deles.</p>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-3">Para Clientes</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/profissionais.html" class="hover:text-white transition-colors">Buscar profissionais</a></li>
+          <li><a href="/solicitar.html" class="hover:text-white transition-colors">Solicitar orçamento</a></li>
+          <li><a href="/cadastro.html" class="hover:text-white transition-colors">Criar conta</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-3">Para Profissionais</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/cadastro.html?tipo=profissional" class="hover:text-white transition-colors">Cadastrar grátis</a></li>
+          <li><a href="/dashboard.html" class="hover:text-white transition-colors">Meu painel</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-3">Contato</h4>
+        <ul class="space-y-2 text-sm">
+          <li>contato@servus.com.br</li>
+          <li>WhatsApp: (11) 9 0000-0000</li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-gray-800 pt-6 text-center text-sm">
+      <p>© 2026 SERVUS. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/config.js"></script>
+<script>
+(async () => {
+  // Preencher select de categorias
+  const cats = await API.get('servus_categorias', 'ativo=eq.true&order=nome.asc');
+  const sel = document.querySelector('select[name="categoria"]');
+  if (sel && cats) {
+    cats.forEach(c => {
+      const opt = document.createElement('option');
+      opt.value = c.id;
+      opt.textContent = c.icone + ' ' + c.nome;
+      sel.appendChild(opt);
+    });
+  }
+
+  // Grid de categorias
+  const grid = document.getElementById('categorias-grid');
+  if (grid && cats) {
+    grid.innerHTML = cats.map(c => `
+      <a href="/profissionais.html?categoria=${c.id}"
+         class="card-hover bg-white border border-gray-100 rounded-2xl p-5 flex flex-col items-center justify-center text-center cursor-pointer hover:border-blue-200 hover:bg-blue-50/30 transition-all">
+        <span class="text-3xl mb-2">${c.icone}</span>
+        <span class="font-semibold text-gray-800 text-sm">${c.nome}</span>
+        <span class="text-gray-400 text-xs mt-1 leading-tight">${c.descricao || ''}</span>
+      </a>
+    `).join('');
+  }
+
+  // Profissionais destaque
+  const profs = await API.get('servus_profissionais',
+    'disponivel=eq.true&order=media_avaliacao.desc,total_avaliacoes.desc&limit=8&select=*,servus_perfis(nome,foto_url,cidade,estado),servus_categorias(nome,icone)');
+  const dGrid = document.getElementById('destaques-grid');
+  if (dGrid) {
+    if (!profs || profs.length === 0) {
+      dGrid.innerHTML = `
+        <div class="col-span-full text-center py-10 text-gray-400">
+          <p class="text-4xl mb-2">👷</p>
+          <p class="font-medium">Os primeiros profissionais estão chegando!</p>
+          <a href="/cadastro.html?tipo=profissional" class="mt-3 inline-block text-blue-600 font-semibold hover:underline">Seja um dos primeiros →</a>
+        </div>`;
+    } else {
+      dGrid.innerHTML = profs.map(p => {
+        const perfil = p.servus_perfis || {};
+        const cat = p.servus_categorias || {};
+        const iniciais = (perfil.nome || 'P').split(' ').map(n=>n[0]).slice(0,2).join('').toUpperCase();
+        return `
+        <a href="/perfil.html?id=${p.id}" class="card-hover bg-white border border-gray-100 rounded-2xl p-5 block">
+          <div class="flex items-center gap-3 mb-3">
+            ${perfil.foto_url
+              ? `<img src="${perfil.foto_url}" class="w-14 h-14 rounded-full object-cover" />`
+              : `<div class="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-lg">${iniciais}</div>`
+            }
+            <div>
+              <div class="font-bold text-gray-900">${perfil.nome || 'Profissional'}</div>
+              <div class="text-xs text-gray-500">${cat.icone || ''} ${cat.nome || ''}</div>
+            </div>
+          </div>
+          <div class="text-sm font-medium text-gray-700 mb-1">${p.titulo}</div>
+          <div class="text-yellow-500 text-sm">${estrelas(Math.round(p.media_avaliacao || 0))}</div>
+          <div class="flex items-center justify-between mt-2">
+            <span class="text-xs text-gray-400">${cidadeEstado(perfil.cidade, perfil.estado)}</span>
+            ${p.valor_hora ? `<span class="text-xs font-semibold text-green-600">R$ ${p.valor_hora}/h</span>` : ''}
+          </div>
+        </a>`;
+      }).join('');
+    }
+  }
+
+  // Atualizar stat
+  const statEl = document.getElementById('stat-profissionais');
+  if (statEl && profs) statEl.textContent = profs.length > 0 ? profs.length + '+' : '500+';
+})();
+</script>
+</body>
+</html>
