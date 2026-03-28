@@ -11,7 +11,11 @@
     { "source": "/login", "destination": "/login.html" },
     { "source": "/dashboard", "destination": "/dashboard.html" },
     { "source": "/solicitar", "destination": "/solicitar.html" },
-    { "source": "/como-funciona", "destination": "/como-funciona.html" }
+    { "source": "/como-funciona", "destination": "/como-funciona.html" },
+    { "source": "/dashboard-construtor", "destination": "/dashboard-construtor.html" },
+    { "source": "/dashboard-corretora", "destination": "/dashboard-corretora.html" },
+    { "source": "/diario-de-obra", "destination": "/diario-de-obra.html" },
+    { "source": "/onboarding-pro", "destination": "/onboarding-pro.html" }
   ],
   "headers": [
     {
